@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol DetailRouterProtocol{}
+
+final class DetailRouter{}

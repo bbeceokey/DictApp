@@ -9,7 +9,11 @@ import UIKit
 import WordsAPI
 
 protocol DetailViewControllerProtocol{
-    
+    func setWordName()
+    func setWordRead()
+    func setUpWordTable()
+    func setUpFiltered()
+    func setUpSynonyms()
     
 }
 class DetailViewController: UIViewController {
@@ -29,15 +33,28 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension DetailViewController : DetailViewControllerProtocol {
+    func setWordName() {
+        wordName.text = words?[0].word?.capitalized
     }
-    */
-
+    
+    func setWordRead() {
+        wordRead.text = words?[0].phonetics?[0].text
+    }
+    
+    func setUpWordTable() {
+        <#code#>
+    }
+    
+    func setUpFiltered() {
+        <#code#>
+    }
+    
+    func setUpSynonyms() {
+        <#code#>
+    }
+    
+    
 }

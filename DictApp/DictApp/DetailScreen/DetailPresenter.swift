@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol DetailPresenterProtocol{}
+
+final class DetailPresenter{}

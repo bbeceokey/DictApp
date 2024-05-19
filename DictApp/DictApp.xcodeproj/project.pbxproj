@@ -28,6 +28,13 @@
 		2F84E99D2BF9281B00570734 /* DetaiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E99C2BF9281B00570734 /* DetaiInteractor.swift */; };
 		2F84E99F2BF9283700570734 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E99E2BF9283700570734 /* DetailPresenter.swift */; };
 		2F84E9A12BF9284900570734 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9A02BF9284900570734 /* DetailRouter.swift */; };
+		2F84E9A72BF9579600570734 /* MeaningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9A52BF9579600570734 /* MeaningTableViewCell.swift */; };
+		2F84E9A82BF9579600570734 /* MeaningTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F84E9A62BF9579600570734 /* MeaningTableViewCell.xib */; };
+		2F84E9AB2BF957AE00570734 /* FilteredCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9A92BF957AE00570734 /* FilteredCollectionViewCell.swift */; };
+		2F84E9AC2BF957AE00570734 /* FilteredCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F84E9AA2BF957AE00570734 /* FilteredCollectionViewCell.xib */; };
+		2F84E9AF2BF957C200570734 /* SynonymCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9AD2BF957C200570734 /* SynonymCollectionViewCell.swift */; };
+		2F84E9B02BF957C200570734 /* SynonymCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F84E9AE2BF957C200570734 /* SynonymCollectionViewCell.xib */; };
+		2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +79,13 @@
 		2F84E99C2BF9281B00570734 /* DetaiInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiInteractor.swift; sourceTree = "<group>"; };
 		2F84E99E2BF9283700570734 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		2F84E9A02BF9284900570734 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		2F84E9A52BF9579600570734 /* MeaningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCell.swift; sourceTree = "<group>"; };
+		2F84E9A62BF9579600570734 /* MeaningTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeaningTableViewCell.xib; sourceTree = "<group>"; };
+		2F84E9A92BF957AE00570734 /* FilteredCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F84E9AA2BF957AE00570734 /* FilteredCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilteredCollectionViewCell.xib; sourceTree = "<group>"; };
+		2F84E9AD2BF957C200570734 /* SynonymCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymCollectionViewCell.swift; sourceTree = "<group>"; };
+		2F84E9AE2BF957C200570734 /* SynonymCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynonymCollectionViewCell.xib; sourceTree = "<group>"; };
+		2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningCellPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +191,7 @@
 		2F84E9912BF8838D00570734 /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2F84E9A22BF9570D00570734 /* Cells */,
 				2F84E9922BF883AD00570734 /* DetailViewController.swift */,
 				2F84E99C2BF9281B00570734 /* DetaiInteractor.swift */,
 				2F84E99E2BF9283700570734 /* DetailPresenter.swift */,
@@ -200,6 +215,20 @@
 				2F84E9992BF895A700570734 /* HomeTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		2F84E9A22BF9570D00570734 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2F84E9A52BF9579600570734 /* MeaningTableViewCell.swift */,
+				2F84E9A62BF9579600570734 /* MeaningTableViewCell.xib */,
+				2F84E9A92BF957AE00570734 /* FilteredCollectionViewCell.swift */,
+				2F84E9AA2BF957AE00570734 /* FilteredCollectionViewCell.xib */,
+				2F84E9AD2BF957C200570734 /* SynonymCollectionViewCell.swift */,
+				2F84E9AE2BF957C200570734 /* SynonymCollectionViewCell.xib */,
+				2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,10 +341,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F84E9A82BF9579600570734 /* MeaningTableViewCell.xib in Resources */,
+				2F84E9AC2BF957AE00570734 /* FilteredCollectionViewCell.xib in Resources */,
 				2F84E9632BF720B200570734 /* LaunchScreen.storyboard in Resources */,
 				2F84E9602BF720B200570734 /* Assets.xcassets in Resources */,
 				2F84E99B2BF895A700570734 /* HomeTableViewCell.xib in Resources */,
 				2F84E95B2BF720B000570734 /* Main.storyboard in Resources */,
+				2F84E9B02BF957C200570734 /* SynonymCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,13 +377,17 @@
 				2F84E95E2BF720B000570734 /* DictApp.xcdatamodeld in Sources */,
 				2F84E9A12BF9284900570734 /* DetailRouter.swift in Sources */,
 				2F84E9902BF7F5E100570734 /* HomeRouter.swift in Sources */,
+				2F84E9AB2BF957AE00570734 /* FilteredCollectionViewCell.swift in Sources */,
 				2F84E9542BF720B000570734 /* AppDelegate.swift in Sources */,
 				2F84E98E2BF7F5D200570734 /* HomePresenter.swift in Sources */,
 				2F84E98C2BF7F5B800570734 /* HomeInteractor.swift in Sources */,
 				2F84E99A2BF895A700570734 /* HomeTableViewCell.swift in Sources */,
 				2F84E9962BF887BE00570734 /* CoreDataManager.swift in Sources */,
+				2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */,
 				2F84E9562BF720B000570734 /* SceneDelegate.swift in Sources */,
+				2F84E9A72BF9579600570734 /* MeaningTableViewCell.swift in Sources */,
 				2F84E9932BF883AD00570734 /* DetailViewController.swift in Sources */,
+				2F84E9AF2BF957C200570734 /* SynonymCollectionViewCell.swift in Sources */,
 				2F84E99F2BF9283700570734 /* DetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
