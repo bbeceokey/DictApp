@@ -19,23 +19,9 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROg-6m-6kT">
                         <rect key="frame" x="0.0" y="4" width="100" height="120"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDb-31-jgI">
-                                <rect key="frame" x="0.0" y="45" width="100" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="CQL-df-TlU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iDb-31-jgI" firstAttribute="leading" secondItem="ROg-6m-6kT" secondAttribute="leading" id="7Uw-cf-HQL"/>
                             <constraint firstAttribute="height" constant="120" id="IlW-Gi-1Yq"/>
-                            <constraint firstAttribute="trailing" secondItem="iDb-31-jgI" secondAttribute="trailing" id="faB-I1-TsH"/>
-                            <constraint firstItem="iDb-31-jgI" firstAttribute="centerY" secondItem="ROg-6m-6kT" secondAttribute="centerY" id="h8f-aI-Q58"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -48,9 +34,6 @@
                 <constraint firstItem="ROg-6m-6kT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="wdj-sI-e9J"/>
             </constraints>
             <size key="customSize" width="126" height="50"/>
-            <connections>
-                <outlet property="synonymLabel" destination="h8f-aI-Q58" id="pP2-NP-HGQ"/>
-            </connections>
             <point key="canvasLocation" x="100.76335877862596" y="19.718309859154932"/>
         </collectionViewCell>
     </objects>

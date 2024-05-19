@@ -37,6 +37,7 @@
 		2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */; };
 		2F84E9B42BF9E4FB00570734 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B32BF9E4FB00570734 /* TableView.swift */; };
 		2F84E9B62BF9E51500570734 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B52BF9E51500570734 /* ClassName.swift */; };
+		2FFA50222BFA81970025B573 /* FilteredCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningCellPresenter.swift; sourceTree = "<group>"; };
 		2F84E9B32BF9E4FB00570734 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		2F84E9B52BF9E51500570734 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
+		2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCellPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 				2F84E9AD2BF957C200570734 /* SynonymCollectionViewCell.swift */,
 				2F84E9AE2BF957C200570734 /* SynonymCollectionViewCell.xib */,
 				2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */,
+				2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				2F84E99A2BF895A700570734 /* HomeTableViewCell.swift in Sources */,
 				2F84E9962BF887BE00570734 /* CoreDataManager.swift in Sources */,
 				2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */,
+				2FFA50222BFA81970025B573 /* FilteredCellPresenter.swift in Sources */,
 				2F84E9562BF720B000570734 /* SceneDelegate.swift in Sources */,
 				2F84E9B42BF9E4FB00570734 /* TableView.swift in Sources */,
 				2F84E9A72BF9579600570734 /* MeaningTableViewCell.swift in Sources */,

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilteredCollectionViewCell" customModule="DictApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="filteredCell" id="gTV-IL-0wX" customClass="FilteredCollectionViewCell" customModule="DictApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
@@ -19,21 +19,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7R0-jk-PZp">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffu-xY-Kkk">
-                                <rect key="frame" x="5" y="5" width="90" height="110"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ffu-xY-Kkk" firstAttribute="leading" secondItem="7R0-jk-PZp" secondAttribute="leading" constant="5" id="WLc-ez-wub"/>
-                            <constraint firstAttribute="bottom" secondItem="ffu-xY-Kkk" secondAttribute="bottom" constant="5" id="ZCG-JN-TGM"/>
-                            <constraint firstAttribute="trailing" secondItem="ffu-xY-Kkk" secondAttribute="trailing" constant="5" id="sXN-QG-6vZ"/>
-                            <constraint firstItem="ffu-xY-Kkk" firstAttribute="top" secondItem="7R0-jk-PZp" secondAttribute="top" constant="5" id="wW2-Xs-eWU"/>
-                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -44,9 +30,6 @@
                 <constraint firstItem="7R0-jk-PZp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LLT-wZ-wt6"/>
                 <constraint firstAttribute="bottom" secondItem="7R0-jk-PZp" secondAttribute="bottom" id="WKM-hp-iUh"/>
             </constraints>
-            <connections>
-                <outlet property="filteredLabel" destination="ffu-xY-Kkk" id="fa3-dn-iWT"/>
-            </connections>
             <point key="canvasLocation" x="27.480916030534349" y="20.422535211267608"/>
         </collectionViewCell>
     </objects>
