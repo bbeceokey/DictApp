@@ -55,9 +55,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="definition" destination="Tpu-Rb-Oh2" id="BMb-F1-jRR"/>
-                <outlet property="example" destination="5wn-T2-WgI" id="qBC-z6-g0g"/>
-                <outlet property="name" destination="eCZ-XJ-NQL" id="MM3-VN-psV"/>
+                <outlet property="definition" destination="Tpu-Rb-Oh2" id="adg-EJ-t4S"/>
+                <outlet property="example" destination="5wn-T2-WgI" id="Edn-6U-ao3"/>
+                <outlet property="speechName" destination="eCZ-XJ-NQL" id="8O0-O3-YhI"/>
             </connections>
             <point key="canvasLocation" x="138.93129770992365" y="26.760563380281692"/>
         </tableViewCell>

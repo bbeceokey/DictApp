@@ -11,7 +11,7 @@ import WordsAPI
 import CoreData
 
 protocol HomeRouterProtocol: AnyObject {
-    func navigateToDetail(with word: [Word2], synonyms: [SynonymWord])
+    func navigateToDetail(with word: [CustomWord], synonyms: [SynonymWord] , words: [Word2])
 }
 
 final class HomeRouter {
@@ -37,10 +37,11 @@ final class HomeRouter {
 }
 
 extension HomeRouter: HomeRouterProtocol {
-    func navigateToDetail(with word: [Word2], synonyms: [SynonymWord]) {
+    func navigateToDetail(with csword: [CustomWord], synonyms: [SynonymWord] , words: [Word2]) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        detailVC.words = word
+        detailVC.cswords = csword
+        detailVC.words = words
         detailVC.synonyms = synonyms
         navigationController?.pushViewController(detailVC, animated: true)
     }

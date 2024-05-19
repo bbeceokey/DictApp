@@ -40,7 +40,7 @@ final class HomeViewController: UIViewController {
         recentSearchsTable.dataSource = self
         searchBar.becomeFirstResponder()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
                
         originalSearchButtonTopConstraintConstant = buttonTopConstraint.constant
         originalSearchButtonBottomConstraintConstant = buttonBottomConstraint.constant

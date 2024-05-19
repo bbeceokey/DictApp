@@ -49,5 +49,27 @@ public struct Phonetic : Decodable {
     public let audio: String
     public let sourceURL: String?
     public let license: License?
-    public let text: String?
+    public let text: String
+}
+
+public struct CustomDefinition {
+    public let definition: String
+    public let example: String?
+
+    public init(definition: String, example: String? = nil) {
+        self.definition = definition
+        self.example = example
+    }
+}
+
+public struct CustomWord {
+    public let audio: String?
+    public let definitions: [CustomDefinition]
+    public let partOfSpeech: String
+
+    public init(partOfSpeech: String, definitions: [CustomDefinition], audio: String? = nil) {
+        self.partOfSpeech = partOfSpeech
+        self.definitions = definitions
+        self.audio = audio
+    }
 }

@@ -21,6 +21,7 @@ protocol HomePresenterProtocol{
 
 final class HomePresenter {
     private var words: [Word2]?
+    private var customWord: [CustomWord]?
     private var synonym : [SynonymWord]?
     private let coreDataManager: CoreDataManagerProtocol?
     weak var view : HomeViewControllerProtocol?
@@ -87,6 +88,21 @@ extension HomePresenter: HomeOutputInteractorProtocol {
         switch result {
         case .success(let word):
             words = word
+            if let meanings = words![0].meanings{
+                var CustomWords = [CustomWord]()
+                for definition in meanings {
+                    var partOfSpeech = definition.partOfSpeech
+                    var customDefs = [CustomDefinition]()
+                    for def in definition.definitions{
+                        var customdef = CustomDefinition(definition: def.definition ?? " ", example: def.example ?? " ")
+                        customDefs.append(customdef)
+                    }
+                    var csWord = CustomWord(partOfSpeech: partOfSpeech, definitions: customDefs)
+                    CustomWords.append(csWord)
+                }
+                customWord = CustomWords
+            }
+          
             navigateIfReady()
         case .failure(let error):
             print(error)
@@ -106,10 +122,10 @@ extension HomePresenter: HomeOutputInteractorProtocol {
     }
 
     private func navigateIfReady() {
-        guard let word = words, let synonyms = synonym else {
+        guard let csword = customWord, let synonyms = synonym else {
             return
         }
-        router?.navigateToDetail(with: word, synonyms: synonyms)
+        router?.navigateToDetail(with: csword, synonyms: synonyms , words: words!)
     }
 
 }

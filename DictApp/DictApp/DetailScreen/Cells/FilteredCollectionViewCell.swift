@@ -6,13 +6,23 @@
 //
 
 import UIKit
-
+import WordsAPI
+protocol FilteredCollectionViewCellProtocol: AnyObject {
+    func configFilterCell( _ model : String)
+}
 class FilteredCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var filteredButton: UIButton!
+    @IBOutlet weak var filteredLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+}
+extension FilteredCollectionViewCell : FilteredCollectionViewCellProtocol {
+    func configFilterCell(_ model: String) {
+        filteredLabel.text = model
+    }
+    
+    
 }

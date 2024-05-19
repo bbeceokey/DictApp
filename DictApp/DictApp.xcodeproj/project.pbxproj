@@ -35,6 +35,8 @@
 		2F84E9AF2BF957C200570734 /* SynonymCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9AD2BF957C200570734 /* SynonymCollectionViewCell.swift */; };
 		2F84E9B02BF957C200570734 /* SynonymCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F84E9AE2BF957C200570734 /* SynonymCollectionViewCell.xib */; };
 		2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */; };
+		2F84E9B42BF9E4FB00570734 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B32BF9E4FB00570734 /* TableView.swift */; };
+		2F84E9B62BF9E51500570734 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B52BF9E51500570734 /* ClassName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		2F84E9AD2BF957C200570734 /* SynonymCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymCollectionViewCell.swift; sourceTree = "<group>"; };
 		2F84E9AE2BF957C200570734 /* SynonymCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynonymCollectionViewCell.xib; sourceTree = "<group>"; };
 		2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningCellPresenter.swift; sourceTree = "<group>"; };
+		2F84E9B32BF9E4FB00570734 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		2F84E9B52BF9E51500570734 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				2F84E9952BF887BE00570734 /* CoreDataManager.swift */,
+				2F84E9B32BF9E4FB00570734 /* TableView.swift */,
+				2F84E9B52BF9E51500570734 /* ClassName.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 				2F84E99D2BF9281B00570734 /* DetaiInteractor.swift in Sources */,
 				2F84E95E2BF720B000570734 /* DictApp.xcdatamodeld in Sources */,
 				2F84E9A12BF9284900570734 /* DetailRouter.swift in Sources */,
+				2F84E9B62BF9E51500570734 /* ClassName.swift in Sources */,
 				2F84E9902BF7F5E100570734 /* HomeRouter.swift in Sources */,
 				2F84E9AB2BF957AE00570734 /* FilteredCollectionViewCell.swift in Sources */,
 				2F84E9542BF720B000570734 /* AppDelegate.swift in Sources */,
@@ -385,6 +392,7 @@
 				2F84E9962BF887BE00570734 /* CoreDataManager.swift in Sources */,
 				2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */,
 				2F84E9562BF720B000570734 /* SceneDelegate.swift in Sources */,
+				2F84E9B42BF9E4FB00570734 /* TableView.swift in Sources */,
 				2F84E9A72BF9579600570734 /* MeaningTableViewCell.swift in Sources */,
 				2F84E9932BF883AD00570734 /* DetailViewController.swift in Sources */,
 				2F84E9AF2BF957C200570734 /* SynonymCollectionViewCell.swift in Sources */,

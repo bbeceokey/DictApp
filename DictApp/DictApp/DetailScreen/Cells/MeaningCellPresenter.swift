@@ -16,14 +16,17 @@ protocol MeaningCellPresenterProtocol: AnyObject {
 final class MeaningCellPresenter {
     
     weak var view: MeaningTableViewCellProtocol?
-    private let model: Word2
+    private let model: CustomDefinition
+    private let partOfSpeech : String
     
     init(
         view: MeaningTableViewCellProtocol?,
-        model: Word2
+        model: CustomDefinition,
+        partOfSpeech : String
     ) {
         self.view = view
         self.model = model
+        self.partOfSpeech = partOfSpeech
     }
     
  
@@ -32,7 +35,10 @@ final class MeaningCellPresenter {
 extension MeaningCellPresenter: MeaningCellPresenterProtocol {
     
     func load() {
-        view?.configMeaningCell(<#T##model: Word2##Word2#>, defCount: <#T##Int#>)
+      
+                   // word dolu ise
+        view?.configMeaningCell(model, partOfSpeech: partOfSpeech)
+               
     }
     
 }
