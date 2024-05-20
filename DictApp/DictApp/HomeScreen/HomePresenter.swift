@@ -85,10 +85,15 @@ extension HomePresenter: HomePresenterProtocol {
 
 extension HomePresenter: HomeOutputInteractorProtocol {
     func handleWordResult(result: WordResult) {
+        var audio = ""
         switch result {
+            
         case .success(let word):
             words = word
             if let meanings = words![0].meanings{
+                if let audiopho = words![0].phonetics?[0].audio{
+                    audio = audiopho
+                }
                 var CustomWords = [CustomWord]()
                 for definition in meanings {
                     var partOfSpeech = definition.partOfSpeech
@@ -97,7 +102,7 @@ extension HomePresenter: HomeOutputInteractorProtocol {
                         var customdef = CustomDefinition(definition: def.definition ?? " ", example: def.example ?? " ")
                         customDefs.append(customdef)
                     }
-                    var csWord = CustomWord(partOfSpeech: partOfSpeech, definitions: customDefs)
+                    var csWord = CustomWord(partOfSpeech: partOfSpeech, definitions: customDefs, audio: audio )
                     CustomWords.append(csWord)
                 }
                 customWord = CustomWords

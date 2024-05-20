@@ -11,6 +11,7 @@ import WordsAPI
 
 protocol DetailInteractorProtocol: AnyObject {
     func fetchFilteredWords(partOfSpeech: String) -> [CustomWord]
+    func getAudioURL() -> String?
 }
 
 
@@ -27,4 +28,9 @@ extension DetailInteractor: DetailInteractorProtocol {
     func fetchFilteredWords(partOfSpeech: String) -> [CustomWord] {
         return csWords.filter { $0.partOfSpeech == partOfSpeech }
     }
+    
+    func getAudioURL() -> String? {
+        print(csWords.first?.audio)
+           return csWords.first?.audio
+       }
 }

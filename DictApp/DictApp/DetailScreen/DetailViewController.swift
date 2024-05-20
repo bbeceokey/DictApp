@@ -7,6 +7,7 @@
 
 import UIKit
 import WordsAPI
+import AVFoundation
 
 protocol DetailViewControllerProtocol: AnyObject {
     func setWordName(_ text: String)
@@ -24,6 +25,7 @@ protocol DetailViewControllerProtocol: AnyObject {
 
 class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var audioImage: UIImageView!
     @IBOutlet weak var wordName: UILabel!
     @IBOutlet weak var wordRead: UILabel!
     @IBOutlet weak var filtereledCollection: UICollectionView!
@@ -36,10 +38,10 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     var filteredList = [String]()
     
     var presenter: DetailPresenterProtocol!
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let interactor = DetailInteractor(csWords: cswords) // Initialize the interactor with csWords
         let router = DetailRouter(viewController: self) // Initialize the router
         presenter = DetailPresenter(view: self, router: router, interactor: interactor)
@@ -67,9 +69,57 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         setUpFiltered()
         setUpSynonyms()
         
-      
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(audioImageTapped))
+                audioImage.addGestureRecognizer(tapGesture)
+                audioImage.isUserInteractionEnabled = true
+   
     }
     
+    @objc func audioImageTapped() {
+            if let audioURLString = presenter.getAudioURL(), let url = URL(string: audioURLString) {
+                downloadAndPlayAudio(from: url)
+            } else {
+                showAlertWithDismiss()
+            }
+        }
+        
+        func downloadAndPlayAudio(from url: URL) {
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Error downloading audio: \(error.localizedDescription)")
+                    return
+                }
+                guard let data = data else {
+                    print("Error: No data received")
+                    return
+                }
+                self.playAudio(with: data)
+            }
+            task.resume()
+        }
+        
+        func playAudio(with data: Data) {
+            DispatchQueue.main.async {
+                do {
+                    self.audioPlayer = try AVAudioPlayer(data: data)
+                    self.audioPlayer?.play()
+                } catch let error {
+                    print("Error playing audio: \(error.localizedDescription)")
+                }
+            }
+        }
+    
+    func showAlertWithDismiss() {
+        let alert = UIAlertController(title: nil, message: "This word does not have a pronunciation audio.", preferredStyle: .alert)
+        
+        alert.view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+                
+                present(alert, animated: true) {
+                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+                        alert.dismiss(animated: true, completion: nil)
+                    }
+                }
+       }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfTable()
     }

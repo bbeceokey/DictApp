@@ -17,6 +17,7 @@ protocol DetailPresenterProtocol: AnyObject {
     func setWordDetail()
     func numberOfFilter() -> Int
     func getSynonyms() -> [SynonymWord]
+    func getAudioURL() -> String?
 }
 
 final class DetailPresenter {
@@ -101,4 +102,8 @@ extension DetailPresenter: DetailPresenterProtocol {
         let topFiveSynonyms = Array(sortedSynonyms.prefix(5))
         return topFiveSynonyms
     }
+    
+    func getAudioURL() -> String? {
+           return interactor.getAudioURL()
+       }
 }
