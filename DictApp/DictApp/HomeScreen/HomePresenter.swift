@@ -38,17 +38,20 @@ final class HomePresenter {
 
 extension HomePresenter: HomePresenterProtocol {
     func deleteRecentSearch(at index: Int) {
-        let data = recentSearches![index]
-        recentSearches?.remove(at: index)
-        //recentSearches = fetchRecentSearches()
-        view?.reloadTableView()
-        coreDataManager?.deleteWordData(data)
+        if let data = recentSearches?[index] {
+            recentSearches?.remove(at: index)
+            view?.reloadTableView()
+            coreDataManager?.deleteWordData(data)
+        } else {
+            print("silinme olmadı")
+        }
+        
     }
     
     func fetchRecentSearches() -> [WordData]{
         if let data = coreDataManager?.fetchData() {
             recentSearches = Array(data.reversed().prefix(5))
-            return recentSearches!
+            return recentSearches ?? []
         } else {
             return []
         }
@@ -89,23 +92,24 @@ extension HomePresenter: HomeOutputInteractorProtocol {
         switch result {
             
         case .success(let word):
-            words = word
-            if let meanings = words![0].meanings{
-                if let audiopho = words![0].phonetics?[0].audio{
-                    audio = audiopho
-                }
-                var CustomWords = [CustomWord]()
-                for definition in meanings {
-                    var partOfSpeech = definition.partOfSpeech
-                    var customDefs = [CustomDefinition]()
-                    for def in definition.definitions{
-                        var customdef = CustomDefinition(definition: def.definition ?? " ", example: def.example ?? " ")
-                        customDefs.append(customdef)
+            if let words = words, !words.isEmpty {
+                if let meanings = words[0].meanings{
+                    if let audiopho = words[0].phonetics?[0].audio{
+                        audio = audiopho
                     }
-                    var csWord = CustomWord(partOfSpeech: partOfSpeech, definitions: customDefs, audio: audio )
-                    CustomWords.append(csWord)
+                    var CustomWords = [CustomWord]()
+                    for definition in meanings {
+                        var partOfSpeech = definition.partOfSpeech
+                        var customDefs = [CustomDefinition]()
+                        for def in definition.definitions{
+                            var customdef = CustomDefinition(definition: def.definition ?? " ", example: def.example ?? " ")
+                            customDefs.append(customdef)
+                        }
+                        var csWord = CustomWord(partOfSpeech: partOfSpeech, definitions: customDefs, audio: audio )
+                        CustomWords.append(csWord)
+                    }
+                    customWord = CustomWords
                 }
-                customWord = CustomWords
             }
           
             navigateIfReady()
@@ -173,7 +177,10 @@ extension HomePresenter: HomeOutputInteractorProtocol {
             return
         }
         print("navigationda cs" , csword , "synonyms",synonyms, "words",words)
-        router?.navigateToDetail(with: csword, synonyms: synonyms , words: words!)
+        if let wordss  = words {
+            router?.navigateToDetail(with: csword, synonyms: synonyms , words: wordss)
+        }
+        
     }
 
 }

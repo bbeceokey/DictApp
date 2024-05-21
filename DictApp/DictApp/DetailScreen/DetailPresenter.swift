@@ -44,7 +44,7 @@ extension DetailPresenter: DetailPresenterProtocol {
     func setWordDetail() {
         guard let view = view else { return }
         let words = view.getWords()
-        view.setWordName(words.word!)
+        view.setWordName(words.word ?? "")
         if let phonetics = words.phonetics {
             if let firstPhonetic = phonetics.first {
                 view.setWordRead(firstPhonetic.text ?? "")
