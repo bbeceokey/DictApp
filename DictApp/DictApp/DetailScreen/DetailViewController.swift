@@ -158,10 +158,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectFilter(indexPath.row)
     }
-   
-       
-      
-    
+ 
     func setUpFiltered() {
         let layout = UICollectionViewFlowLayout()
        layout.scrollDirection = .horizontal // Yatay yönde kaydırma

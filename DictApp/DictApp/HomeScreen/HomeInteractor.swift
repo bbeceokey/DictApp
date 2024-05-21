@@ -16,6 +16,7 @@ protocol HomeInteractorProtocol {
 protocol HomeOutputInteractorProtocol : AnyObject {
     func handleWordResult(result : WordResult)
     func handleSynonymResult(result : SynonymResult)
+    func handleResult(result: SynonymResult, wresult: WordResult)
 }
 
 
@@ -25,6 +26,9 @@ typealias SynonymResult = Result < [SynonymWord] , Error>
 final class HomeInteractor {
     private let wordService : WordsServiceProtocol
     private let synonymService : SynonymServiceProtocol
+    var wordResult: WordResult?
+    var synonymResult: SynonymResult?
+
     
     weak var output : HomeOutputInteractorProtocol?
     
@@ -38,16 +42,27 @@ final class HomeInteractor {
 
 extension HomeInteractor: HomeInteractorProtocol {
     func fetchWordDetail(word: String) {
-            wordService.fetchWords(for: word) { [weak self] result in
-                guard let self = self else { return }
-                self.output?.handleWordResult(result: result)
-            }
+        wordService.fetchWords(for: word) { [weak self] result in
+            guard let self = self else { return }
+            self.wordResult = result
+            self.tryHandleResults()
         }
-        
-        func fetchSynonyms(word: String) {
-            synonymService.fetchSynonymWords(for: word) { [weak self] result in
-                guard let self = self else { return }
-                self.output?.handleSynonymResult(result: result)
-            }
+    }
+
+    func fetchSynonyms(word: String) {
+        synonymService.fetchSynonymWords(for: word) { [weak self] result in
+            guard let self = self else { return }
+            self.synonymResult = result
+            self.tryHandleResults()
         }
+    }
+
+    private func tryHandleResults() {
+        if let wordResult = wordResult, let synonymResult = synonymResult {
+            self.output?.handleResult(result: synonymResult, wresult: wordResult)
+            self.wordResult = nil // Clean up after handling
+            self.synonymResult = nil // Clean up after handling
+        }
+    }
+
 }

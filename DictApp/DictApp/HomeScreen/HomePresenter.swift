@@ -125,11 +125,54 @@ extension HomePresenter: HomeOutputInteractorProtocol {
             //view?.displayError(error: error)
         }
     }
+    
+    func handleResult(result: SynonymResult, wresult: WordResult) {
+        switch result {
+        case .success(let synonyms):
+            switch wresult {
+            case .success(let words):
+                self.words = words
+                self.synonym = synonyms
+                
+                guard let firstWord = words.first else {
+                    print("No words available")
+                    return
+                }
+                
+                let audio = firstWord.phonetics?.first?.audio ?? ""
+                
+                guard let meanings = firstWord.meanings else {
+                    print("No meanings available")
+                    return
+                }
+                
+                let customWords = meanings.map { meaning -> CustomWord in
+                    let partOfSpeech = meaning.partOfSpeech
+                    let customDefs = meaning.definitions.map { def -> CustomDefinition in
+                        CustomDefinition(definition: def.definition ?? " ", example: def.example ?? " ")
+                    }
+                    return CustomWord(partOfSpeech: partOfSpeech, definitions: customDefs, audio: audio)
+                }
+                
+                self.customWord = customWords
+                
+                navigateIfReady()
+            case .failure(let error):
+                print(error)
+                // view?.displayError(error: error) // Uncomment if you want to display error to the user
+            }
+        case .failure(let error):
+            print(error)
+            // view?.displayError(error: error) // Uncomment if you want to display error to the user
+        }
+    }
+
 
     private func navigateIfReady() {
         guard let csword = customWord, let synonyms = synonym else {
             return
         }
+        print("navigationda cs" , csword , "synonyms",synonyms, "words",words)
         router?.navigateToDetail(with: csword, synonyms: synonyms , words: words!)
     }
 
