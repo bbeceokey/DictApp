@@ -21,23 +21,23 @@ class SynonymCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        // UILabel oluştur
+
         synonymLabel = UILabel()
-               synonymLabel.translatesAutoresizingMaskIntoConstraints = false
-               contentView.addSubview(synonymLabel)
+        synonymLabel.textAlignment = .center
+        synonymLabel.textColor = .black
+        synonymLabel.backgroundColor = .gray
+        synonymLabel.layer.cornerRadius = 8
+        synonymLabel.clipsToBounds = true
+        addSubview(synonymLabel)
+        synonymLabel.translatesAutoresizingMaskIntoConstraints = false
+    
+       NSLayoutConstraint.activate([
+           synonymLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+           synonymLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+           synonymLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+           synonymLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+       ])
                
-               // UILabel için constraints belirle
-               NSLayoutConstraint.activate([
-                   synonymLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-                   synonymLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                   synonymLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                   synonymLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-               ])
-               
-               // Arka plan rengi ve köşe yuvarlama (radius) ayarla
-               contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-               contentView.layer.cornerRadius = 8.0 // İsteğe bağlı: Köşe yuvarlama miktarı
-               contentView.clipsToBounds = true 
     }
     
     func synonymConfig(_ text: String){

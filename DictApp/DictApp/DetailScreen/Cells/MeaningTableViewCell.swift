@@ -35,7 +35,6 @@ class MeaningTableViewCell: UITableViewCell {
     }
     
     private func setupSubviews() {
-        // UILabel'leri oluştur
         exampleLabel = UILabel()
         exampleLabel.numberOfLines = 0
         exampleLabel.font = UIFont.systemFont(ofSize: 14) // Silik font
