@@ -45,10 +45,22 @@ extension DetailPresenter: DetailPresenterProtocol {
         guard let view = view else { return }
         let words = view.getWords()
         view.setWordName(words.word!)
-        if let phonetics = words.phonetics, let firstPhonetic = phonetics.first {
-            view.setWordRead(firstPhonetic.text)
-        } else {
-            view.setWordRead("")
+        if let phonetics = words.phonetics {
+            if let firstPhonetic = phonetics.first {
+                view.setWordRead(firstPhonetic.text ?? "")
+                if firstPhonetic.text == nil {
+                    for phonetic in phonetics {
+                        if phonetic.text != nil {
+                            view.setWordRead(phonetic.text ?? "")
+                            return
+                        }
+                        
+                    }
+                }
+                
+            } else {
+                view.setWordRead("")
+            }
         }
     }
     

@@ -49,7 +49,7 @@ public struct Phonetic : Decodable {
     public let audio: String
     public let sourceURL: String?
     public let license: License?
-    public let text: String
+    public let text: String?
 }
 
 public struct CustomDefinition {
