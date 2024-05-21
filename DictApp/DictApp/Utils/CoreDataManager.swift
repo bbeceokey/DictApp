@@ -28,11 +28,21 @@ class CoreDataManager: CoreDataManagerProtocol {
         })
     }
     func saveRecentSearch(name: String) {
+        let fetchData = fetchData()
         let context = persistentContainer.viewContext
-        let wordData = WordData(context: context)
-        wordData.name = name
+        if let filteredData = fetchData?.filter({ $0.name == name }), !filteredData.isEmpty {
+            return
+        } else {
+            let wordData = WordData(context: context)
+            if name != "" {
+                wordData.name = name
+                saveContext()
+            }
+            
+            
+        }
+       
         
-        saveContext()
     }
 
     func saveContext() {

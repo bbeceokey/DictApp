@@ -70,10 +70,15 @@ extension HomePresenter: HomePresenterProtocol {
     
     
     func searchWord(word: String) {
-        updateCore(word: word)
-        interactor?.fetchWordDetail(word: word)
-        interactor?.fetchSynonyms(word: word)
-        tableViewUpdate()
+        if word != ""{
+            updateCore(word: word)
+            interactor?.fetchWordDetail(word: word)
+            interactor?.fetchSynonyms(word: word)
+            tableViewUpdate()
+        } else {
+            view?.showAlertDismiss()
+        }
+       
     }
     
     func tappledWord(word: String){
