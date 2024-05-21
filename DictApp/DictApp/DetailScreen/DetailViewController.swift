@@ -72,8 +72,16 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(audioImageTapped))
                 audioImage.addGestureRecognizer(tapGesture)
                 audioImage.isUserInteractionEnabled = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFilterSelectionChange(_:)), name: NSNotification.Name("FilterSelectionChanged"), object: nil)
    
     }
+    @objc private func handleFilterSelectionChange(_ notification: Notification) {
+            guard let userInfo = notification.userInfo,
+                  let label = userInfo["label"] as? String else { return }
+            
+            presenter.updateSelectedFilters(with: label)
+        }
     
     @objc func audioImageTapped() {
             if let audioURLString = presenter.getAudioURL(), let url = URL(string: audioURLString) {
@@ -120,6 +128,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 }
        }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfTable()
     }
@@ -146,7 +155,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == filtereledCollection {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filteredCell", for: indexPath) as! FilteredCollectionViewCell
-            cell.configFilterCell(filteredList[indexPath.row])
+            cell.configFilterCell(filteredList[indexPath.row], isSelected: false)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "synonymCell", for: indexPath) as! SynonymCollectionViewCell
@@ -156,7 +165,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.didSelectFilter(indexPath.row)
+        presenter.updateSelectedFilters(with: presenter.getFilteredWords()[indexPath.row])
     }
  
     func setUpFiltered() {

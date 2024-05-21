@@ -28,6 +28,6 @@ final class FilteredCellPresenter {
 extension FilteredCellPresenter: FilteredCellPresenterProtocol {
     
     func load() {
-        view?.configFilterCell(model)
+        view?.configFilterCell(model, isSelected: false)
     }
 }

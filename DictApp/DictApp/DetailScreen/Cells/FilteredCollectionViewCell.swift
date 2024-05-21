@@ -8,11 +8,16 @@
 import UIKit
 import WordsAPI
 protocol FilteredCollectionViewCellProtocol: AnyObject {
-    func configFilterCell( _ model : String)
+    func configFilterCell( _ model : String,isSelected: Bool)
 }
 
 class FilteredCollectionViewCell: UICollectionViewCell {
     var filteredLabel: UILabel!
+    var isSelectedFilter: Bool = false {
+        didSet {
+            updateLabelAppearance()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,12 +48,28 @@ class FilteredCollectionViewCell: UICollectionViewCell {
                filteredLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
                filteredLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
            ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+               filteredLabel.isUserInteractionEnabled = true
+               filteredLabel.addGestureRecognizer(tapGesture)
        }
+        
+        @objc private func labelTapped() {
+                isSelectedFilter.toggle()
+                updateLabelAppearance()
+                // Notify the view controller or presenter about the selection change
+                NotificationCenter.default.post(name: NSNotification.Name("FilterSelectionChanged"), object: nil, userInfo: ["label": filteredLabel.text ?? "", "isSelected": isSelectedFilter])
+            }
+            
+            private func updateLabelAppearance() {
+                filteredLabel.backgroundColor = isSelectedFilter ? .blue : .gray
+            }
 
 }
 extension FilteredCollectionViewCell : FilteredCollectionViewCellProtocol {
-    func configFilterCell(_ model: String) {
+    func configFilterCell(_ model: String, isSelected: Bool) {
         filteredLabel.text = model
+        isSelectedFilter = isSelected
     }
     
     

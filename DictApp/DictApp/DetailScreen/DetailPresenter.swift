@@ -12,12 +12,13 @@ protocol DetailPresenterProtocol: AnyObject {
     func viewDidload()
     func numberOfTable() -> Int
     func didSelectFilter(_ index: Int)
-    func getFilteredWords() -> [CustomDefinition]
+    func getFilteredWords() -> [String]
     func getDefinition(at index: Int) -> (definition: CustomDefinition, partOfSpeech: String)
     func setWordDetail()
     func numberOfFilter() -> Int
     func getSynonyms() -> [SynonymWord]
     func getAudioURL() -> String?
+    func updateSelectedFilters(with filter: String)
 }
 
 final class DetailPresenter {
@@ -31,6 +32,7 @@ final class DetailPresenter {
     private var csWords = [CustomWord]()
     private var allDefinitions = [(definition: CustomDefinition, partOfSpeech: String)]()
     private var filteredDefinitions = [(definition: CustomDefinition, partOfSpeech: String)]()
+    var selectedFilters = Set<String>()
     
     init(view: DetailViewControllerProtocol, router: DetailRouterProtocol, interactor: DetailInteractorProtocol) {
         self.view = view
@@ -64,8 +66,8 @@ extension DetailPresenter: DetailPresenterProtocol {
         }
     }
     
-    func getFilteredWords() -> [CustomDefinition] {
-        return filteredDefinitions.map { $0.definition}
+    func getFilteredWords() -> [String] {
+        return filteredDefinitions.map { $0.partOfSpeech}
     }
     
     func viewDidload() {
@@ -118,4 +120,26 @@ extension DetailPresenter: DetailPresenterProtocol {
     func getAudioURL() -> String? {
            return interactor.getAudioURL()
        }
+    
+    func updateSelectedFilters(with filter: String) {
+            if selectedFilters.contains(filter) {
+                selectedFilters.remove(filter)
+            } else {
+                selectedFilters.insert(filter)
+            }
+            filterWordTable()
+        }
+
+        private func filterWordTable() {
+            if !selectedFilters.isEmpty {
+                filteredDefinitions = allDefinitions.filter { definition in
+                    selectedFilters.contains(definition.partOfSpeech)
+                }}
+            
+            if selectedFilters.isEmpty {
+                filteredDefinitions = allDefinitions
+            }
+            
+            view?.reloadWordTable()
+        }
 }
