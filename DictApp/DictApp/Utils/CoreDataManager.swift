@@ -27,6 +27,7 @@ class CoreDataManager: CoreDataManagerProtocol {
             }
         })
     }
+    
     func saveRecentSearch(name: String) {
         let fetchData = fetchData()
         let context = persistentContainer.viewContext
@@ -38,11 +39,7 @@ class CoreDataManager: CoreDataManagerProtocol {
                 wordData.name = name
                 saveContext()
             }
-            
-            
         }
-       
-        
     }
 
     func saveContext() {

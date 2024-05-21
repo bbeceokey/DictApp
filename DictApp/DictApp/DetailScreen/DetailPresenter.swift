@@ -139,7 +139,6 @@ extension DetailPresenter: DetailPresenterProtocol {
             if selectedFilters.isEmpty {
                 filteredDefinitions = allDefinitions
             }
-            
             view?.reloadWordTable()
         }
 }

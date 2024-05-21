@@ -70,26 +70,25 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         setUpSynonyms()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(audioImageTapped))
-                audioImage.addGestureRecognizer(tapGesture)
-                audioImage.isUserInteractionEnabled = true
+        audioImage.addGestureRecognizer(tapGesture)
+        audioImage.isUserInteractionEnabled = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleFilterSelectionChange(_:)), name: NSNotification.Name("FilterSelectionChanged"), object: nil)
    
     }
     @objc private func handleFilterSelectionChange(_ notification: Notification) {
-            guard let userInfo = notification.userInfo,
-                  let label = userInfo["label"] as? String else { return }
-            
-            presenter.updateSelectedFilters(with: label)
-        }
+        guard let userInfo = notification.userInfo,
+        let label = userInfo["label"] as? String else { return }
+        presenter.updateSelectedFilters(with: label)
+}
     
     @objc func audioImageTapped() {
-            if let audioURLString = presenter.getAudioURL(), let url = URL(string: audioURLString) {
-                downloadAndPlayAudio(from: url)
-            } else {
-                showAlertWithDismiss()
-            }
+        if let audioURLString = presenter.getAudioURL(), let url = URL(string: audioURLString) {
+            downloadAndPlayAudio(from: url)
+        } else {
+            showAlertWithDismiss()
         }
+}
         
         func downloadAndPlayAudio(from url: URL) {
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -119,15 +118,13 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func showAlertWithDismiss() {
         let alert = UIAlertController(title: nil, message: "This word does not have a pronunciation audio.", preferredStyle: .alert)
-        
         alert.view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-                
-                present(alert, animated: true) {
-                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
-                        alert.dismiss(animated: true, completion: nil)
-                    }
-                }
-       }
+        present(alert, animated: true) {
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
+}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfTable()
@@ -144,9 +141,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         if collectionView == filtereledCollection {
             return presenter.numberOfFilter()
         } else if collectionView == synonymCollections {
-           
             return presenter.getSynonyms().count
-            
         }
         return 0
     }

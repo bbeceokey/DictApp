@@ -26,17 +26,18 @@ final class HomeViewController: UIViewController {
     private var searchWord : String?
     
     private var recentSearches: [WordData] = []
+    
+    
     @IBAction func SearchClicked(_ sender: Any) {
         guard let search = searchWord else { return }
         if searchWord != "" {
-            presenter.tappledWord(word: search)
+            presenter.searchWord(word: search)
+            recentSearches = presenter.fetchRecentSearches()
         } else {
             self.showAlertDismiss()
         }
-       
     }
-    
-    
+ 
     override func viewDidLoad() {
         recentSearchsTable.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeWordCell")
 
@@ -46,42 +47,44 @@ final class HomeViewController: UIViewController {
         recentSearchsTable.delegate = self
         recentSearchsTable.dataSource = self
         searchBar.becomeFirstResponder()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-               
         originalSearchButtonTopConstraintConstant = buttonTopConstraint.constant
         originalSearchButtonBottomConstraintConstant = buttonBottomConstraint.constant
+        
+        // Klavye bildirimleri
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Ekrana dokunma tanıyıcısı
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
        
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    buttonBottomConstraint.constant = keyboardFrame.height + 2
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    }
+                }
+       }
+       
+       @objc func keyboardWillHide(notification: NSNotification) {
+           buttonBottomConstraint.constant = 20
+                  UIView.animate(withDuration: 0.3) {
+                      self.view.layoutIfNeeded()
+                  }
+       }
+       
+       @objc func dismissKeyboard() {
+           view.endEditing(true)
+   }
+    
     deinit {
             NotificationCenter.default.removeObserver(self)
         }
-        
-        @objc func keyboardDidHide() {
-            if let searchText = searchBar.text {
-                print("Arama metni: \(searchText)")
-                searchWord = searchText
-            }
-        }
-    @objc func keyboardWillShow(_ notification: Notification) {
-        // Klavyenin boyutunu al
-        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-            // Klavyenin yüksekliğini ve konumunu elde et
-            let keyboardHeight = keyboardFrame.size.height
-            
-            // Arayüzdeki searchButton'un üst ve alt constraint'lerini klavyenin yüksekliği ile güncelle
-            let newSearchButtonTopConstraintConstant = originalSearchButtonTopConstraintConstant + keyboardHeight + 50 // İstenilen boşluk (20) eklendi
-            let newSearchButtonBottomConstraintConstant = originalSearchButtonBottomConstraintConstant + keyboardHeight + 50 // İstenilen boşluk (20) eklendi
-            
-            // Animasyon ile searchButton'un constraint'lerini güncelle
-            UIView.animate(withDuration: 0.3) {
-                self.buttonTopConstraint.constant = newSearchButtonTopConstraintConstant
-                self.buttonBottomConstraint.constant = newSearchButtonBottomConstraintConstant
-                self.view.layoutIfNeeded()
-            }
-        }
     }
-}
+
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -89,6 +92,7 @@ extension HomeViewController: UISearchBarDelegate {
         searchWord = query
         presenter.searchWord(word: query)
         recentSearches = presenter.fetchRecentSearches()
+        dismissKeyboard()
         reloadTableView()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
@@ -118,9 +122,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let search = recentSearches[indexPath.row].name ?? "ece"
-
         presenter.tappledWord(word: search)
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             recentSearches.remove(at: indexPath.row)
@@ -144,7 +148,8 @@ extension HomeViewController: HomeViewControllerProtocol {
         self.recentSearches = searches
         reloadTableView()
     }
+    
     func reloadTableView() {
-            recentSearchsTable.reloadData()
-        }
+        recentSearchsTable.reloadData()
+    }
 }
