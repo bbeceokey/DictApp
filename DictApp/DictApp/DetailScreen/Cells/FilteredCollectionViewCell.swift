@@ -36,11 +36,11 @@ class FilteredCollectionViewCell: UICollectionViewCell {
            filteredLabel.textAlignment = .center
            filteredLabel.textColor = .black
            filteredLabel.backgroundColor = .gray
-           filteredLabel.layer.cornerRadius = 8 // Köşeleri yuvarla
-           filteredLabel.clipsToBounds = true // Kesme özelliğini etkinleştir
+           filteredLabel.layer.cornerRadius = 8
+           filteredLabel.clipsToBounds = true
            addSubview(filteredLabel)
            
-           // UILabel'in constraints'larını ayarla
+          
            filteredLabel.translatesAutoresizingMaskIntoConstraints = false
            NSLayoutConstraint.activate([
                filteredLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -57,7 +57,6 @@ class FilteredCollectionViewCell: UICollectionViewCell {
         @objc private func labelTapped() {
                 isSelectedFilter.toggle()
                 updateLabelAppearance()
-                // Notify the view controller or presenter about the selection change
                 NotificationCenter.default.post(name: NSNotification.Name("FilterSelectionChanged"), object: nil, userInfo: ["label": filteredLabel.text ?? "", "isSelected": isSelectedFilter])
             }
             
