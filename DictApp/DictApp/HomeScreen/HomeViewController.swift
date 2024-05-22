@@ -42,6 +42,7 @@ final class HomeViewController: UIViewController {
         recentSearchsTable.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeWordCell")
 
         recentSearches = presenter.fetchRecentSearches()
+        recentSearchsTable.isUserInteractionEnabled = true
         reloadTableView()
         searchBar.delegate = self
         recentSearchsTable.delegate = self
@@ -49,14 +50,15 @@ final class HomeViewController: UIViewController {
         searchBar.becomeFirstResponder()
         originalSearchButtonTopConstraintConstant = buttonTopConstraint.constant
         originalSearchButtonBottomConstraintConstant = buttonBottomConstraint.constant
+       
         
-        // Klavye bildirimleri
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        // Ekrana dokunma tanıyıcısı
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGesture)
+        tapGesture.cancelsTouchesInView = false // Bu satır, bu jestle birlikte diğer jestlerin tanınmasına izin verir.
+        view.addGestureRecognizer(tapGesture) // Tablonun bulunduğu view'e ekleyin.
+
        
     }
     
