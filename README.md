@@ -6,6 +6,7 @@ This project built at Version 15.2 XCode and used 17.2 iOS simulator.
 All of the coins informations fetch from the following api
 
 API_KEY
+
 -for detail:
   https://api.dictionaryapi.dev/api/v2/entries/en/{word}
 -for synonyms:
