@@ -30,21 +30,20 @@ class SynonymCollectionViewCell: UICollectionViewCell {
         addSubview(synonymLabel)
         synonymLabel.translatesAutoresizingMaskIntoConstraints = false
         synonymLabel.numberOfLines = 0
-        
-        // Add width constraint to the label
-        let widthConstraint = synonymLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 500) // set a maximum width, adjust as needed
-        widthConstraint.priority = .required - 1 // Lower priority to allow intrinsic content size to take precedence
+    
+       
         
         NSLayoutConstraint.activate([
             synonymLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             synonymLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             synonymLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             synonymLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            widthConstraint // Activate the width constraint
+             // Activate the width constraint
         ])
         
         // Set preferredMaxLayoutWidth to enable multiline support
-        synonymLabel.preferredMaxLayoutWidth = 300 // set the same value as the maximum width constraint
+        synonymLabel.preferredMaxLayoutWidth = 300
+        // set the same value as the maximum width constraint
     }
 
     

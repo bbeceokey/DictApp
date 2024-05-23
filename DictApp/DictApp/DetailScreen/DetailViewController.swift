@@ -23,7 +23,7 @@ protocol DetailViewControllerProtocol: AnyObject {
     func reloadFilterTable()
 }
 
-class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource  {
     
     @IBOutlet weak var audioImage: UIImageView!
     @IBOutlet weak var wordName: UILabel!
@@ -150,6 +150,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
         return 0
     }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -167,19 +170,32 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.updateSelectedFilters(with: presenter.getFilteredWords()[indexPath.row])
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == synonymCollections{
+            let text = synonyms[indexPath.row].word
+                let width = collectionView.bounds.width - 20
+                
+                return CGSize(width: width, height: 150)
+        }
+        return CGSize(width: 0, height: 0)
+        
+        }
  
     func setUpFiltered() {
         let layout = UICollectionViewFlowLayout()
        layout.scrollDirection = .horizontal // Yatay yönde kaydırma
        
         layout.estimatedItemSize = CGSize(width: 200, height: 50)
-       synonymCollections.collectionViewLayout = layout
+      
     }
     
     func setUpSynonyms() {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = CGSize(width: 350, height: 50)
+        flowLayout.minimumLineSpacing = 5.0
         flowLayout.scrollDirection = .horizontal
-        synonymCollections.setCollectionViewLayout(flowLayout, animated: true)
+        
     }
 }
 
