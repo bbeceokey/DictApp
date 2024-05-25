@@ -158,6 +158,7 @@ extension HomeViewController: HomeViewControllerProtocol {
     }
     
     func reloadTableView() {
+        self.recentSearches = presenter.fetchRecentSearches()
         recentSearchsTable.reloadData()
     }
 }
