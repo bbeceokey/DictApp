@@ -19,7 +19,7 @@ API_KEY
 - AVFoundation -> for words' pronunciation
 
   
-##Screenshots
+## Screenshots
 
 | Ekran Görüntüsü 1 | Ekran Görüntüsü 2 | Ekran Görüntüsü 3 | Ekran Görüntüsü 4 | Ekran Görüntüsü 5 |  Ekran Görüntüsü 6 |
 |------------------|------------------|------------------|------------------|------------------|------------------|
@@ -27,7 +27,8 @@ API_KEY
    |  ![simulator_screenshot_7AE231A1-8C38-47CC-AB4A-84B2F43F8BFE](https://github.com/bbeceokey/DictApp/assets/158613315/e0887e17-4f8f-4205-93c2-ba4a234dbb93)
  |
 
-##SimülatörVideo 
+
+## SimülatörVideo 
 
 -- some words dont have audio , if it has , you clicked the image and can listen.
 
