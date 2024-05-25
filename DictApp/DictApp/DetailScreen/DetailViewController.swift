@@ -46,6 +46,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         let router = DetailRouter(viewController: self) // Initialize the router
         presenter = DetailPresenter(view: self, router: router, interactor: interactor)
         
+        wordName.numberOfLines = 0
+        wordName.adjustsFontSizeToFitWidth = true
         wordTable.register(MeaningTableViewCell.self, forCellReuseIdentifier: "MeaningTableViewCell")
         filtereledCollection.register(UINib(nibName: "FilteredCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "filteredCell")
         synonymCollections.register(UINib(nibName: "SynonymCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "synonymCell")
@@ -202,7 +204,7 @@ extension DetailViewController: DetailViewControllerProtocol {
     }
     
     func setWordName(_ text: String) {
-        self.wordName.text = text
+        self.wordName.text = text.capitalized
     }
     
     func setWordRead(_ text: String) {
