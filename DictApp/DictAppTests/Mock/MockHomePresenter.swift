@@ -100,20 +100,18 @@ final class HomePresenterTests: XCTestCase {
         let wordData = WordData(context: coreDataManager.persistentContainer.viewContext)
         wordData.name = "hello"
         coreDataManager.mockData = [wordData] // Ensure the mock data is set
+        let text = "warning"
         
         XCTAssertFalse(view.isInvokeReloadTable, "Table reload should not be invoked initially.")
-        XCTAssertFalse(view.isInvokeRecentSearch, "Recent search should not be invoked initially.")
         XCTAssertFalse(view.isInvokeShowAlert, "Show alert should not be invoked initially.")
-        XCTAssertNil(view.isInvokedSetSeacrhes?.searches, "Searches should be nil initially.")
-        
+       
         presenter.tableViewUpdate()
-        view.displayRecentSearches([wordData])
-        view.showAlertDismiss()
+        
+        view.showAlertDismiss(text: text)
         
         XCTAssertTrue(view.isInvokeReloadTable, "Table reload should be invoked.")
-        XCTAssertTrue(view.isInvokeRecentSearch, "Recent search should be invoked.")
         XCTAssertTrue(view.isInvokeShowAlert, "Show alert should be invoked.")
-        XCTAssertEqual(view.isInvokedSetSeacrhes?.searches, [wordData], "Searches should contain the test wordData.")
+        
         
     }
     

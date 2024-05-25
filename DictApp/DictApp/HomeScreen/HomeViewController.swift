@@ -10,7 +10,6 @@ import CoreData
 
 
 protocol HomeViewControllerProtocol : AnyObject{
-    func displayRecentSearches(_ searches: [WordData])
     func reloadTableView()
     func showAlertDismiss(text : String)
 }
@@ -151,12 +150,7 @@ extension HomeViewController: HomeViewControllerProtocol {
             }
         }
      }
-    
-    func displayRecentSearches(_ searches: [WordData]) {
-        self.recentSearches = searches
-        reloadTableView()
-    }
-    
+  
     func reloadTableView() {
         self.recentSearches = presenter.fetchRecentSearches()
         recentSearchsTable.reloadData()

@@ -9,17 +9,6 @@ import Foundation
 @testable import DictApp
 
 final class MockHomeViewController : HomeViewControllerProtocol {
-    
-    var isInvokeRecentSearch = false
-    var isInvokeRecentSearchCount = 0
-    var isInvokedSetSeacrhes : ( searches: [DictApp.WordData], Void)?
-    
-    func displayRecentSearches(_ searches: [DictApp.WordData]) {
-        isInvokeRecentSearch = true
-        isInvokeRecentSearchCount += 1
-        isInvokedSetSeacrhes = (searches,())
-    }
-    
     var isInvokeReloadTable = false
     var isInvokeReloadTableCount = 0
     func reloadTableView() {
@@ -29,7 +18,7 @@ final class MockHomeViewController : HomeViewControllerProtocol {
     
     var isInvokeShowAlert = false
     var isInvokeShowAlertCount = 0
-    func showAlertDismiss() {
+    func showAlertDismiss(text: String) {
         isInvokeShowAlert = true
         isInvokeShowAlertCount += 1
     }
