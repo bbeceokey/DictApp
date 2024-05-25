@@ -40,11 +40,7 @@ final class HomePresenterTests: XCTestCase {
         container.persistentStoreDescriptions = [description]
         
         // Persistent store'ları yükle
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error {
-                fatalError("Failed to load persistent stores: \(error)")
-            }
-        })
+
         
         persistentContainer = container
         
@@ -147,7 +143,7 @@ final class HomePresenterTests: XCTestCase {
         XCTAssertNil(interactor.fetchWordDetailWord, "fetchWordDetail(word:) should not have any word initially.")
         
  
-        let testWord = Word2.testWord.word ?? "Car"
+        let testWord = Word2.testWord.word!
         interactor.fetchWordDetail(word: testWord)
         
        

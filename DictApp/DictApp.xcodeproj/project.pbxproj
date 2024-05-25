@@ -43,6 +43,7 @@
 		2F8F41A62C01348200B844FB /* MockHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41A52C01348200B844FB /* MockHomePresenter.swift */; };
 		2F8F41AC2C013E9100B844FB /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41AB2C013E9100B844FB /* MockHomeRouter.swift */; };
 		2F8F41AE2C0141BC00B844FB /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41AD2C0141BC00B844FB /* MockCoreDataManager.swift */; };
+		2F8F41B02C01DD3700B844FB /* MeaningTableViewCellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41AF2C01DD3700B844FB /* MeaningTableViewCellUITests.swift */; };
 		2FFA50222BFA81970025B573 /* FilteredCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		2F8F41A52C01348200B844FB /* MockHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomePresenter.swift; sourceTree = "<group>"; };
 		2F8F41AB2C013E9100B844FB /* MockHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
 		2F8F41AD2C0141BC00B844FB /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
+		2F8F41AF2C01DD3700B844FB /* MeaningTableViewCellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCellUITests.swift; sourceTree = "<group>"; };
 		2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCellPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 				2F8F419C2C012C3A00B844FB /* Mock */,
 				2F84E96D2BF720B300570734 /* DictAppTests.swift */,
 				2F8F41982C012B1B00B844FB /* Word.json */,
+				2F8F41AF2C01DD3700B844FB /* MeaningTableViewCellUITests.swift */,
 			);
 			path = DictAppTests;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				2F84E96E2BF720B300570734 /* DictAppTests.swift in Sources */,
 				2F8F41A62C01348200B844FB /* MockHomePresenter.swift in Sources */,
 				2F8F41A22C01314700B844FB /* MockHomeInteractor.swift in Sources */,
+				2F8F41B02C01DD3700B844FB /* MeaningTableViewCellUITests.swift in Sources */,
 				2F8F41AE2C0141BC00B844FB /* MockCoreDataManager.swift in Sources */,
 				2F8F419E2C012C7400B844FB /* MockHomeViewController.swift in Sources */,
 			);
