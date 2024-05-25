@@ -108,7 +108,7 @@ extension HomePresenter: HomeOutputInteractorProtocol {
                     }
                     var CustomWords = [CustomWord]()
                     for definition in meanings {
-                        var partOfSpeech = definition.partOfSpeech
+                        let partOfSpeech = definition.partOfSpeech
                         var customDefs = [CustomDefinition]()
                         for def in definition.definitions{
                             var customdef = CustomDefinition(definition: def.definition ?? " ", example: def.example ?? " ")
