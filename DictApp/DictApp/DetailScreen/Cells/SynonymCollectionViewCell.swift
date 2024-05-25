@@ -21,32 +21,27 @@ class SynonymCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
+
         synonymLabel = UILabel()
         synonymLabel.textAlignment = .center
-        synonymLabel.textColor = .black
-        synonymLabel.backgroundColor = .gray
+        synonymLabel.textColor = .darkText
+        synonymLabel.backgroundColor = .systemBlue
         synonymLabel.layer.cornerRadius = 8
-        synonymLabel.clipsToBounds = false
+        synonymLabel.clipsToBounds = true
         addSubview(synonymLabel)
         synonymLabel.translatesAutoresizingMaskIntoConstraints = false
         synonymLabel.numberOfLines = 0
     
-       
-        
         NSLayoutConstraint.activate([
-            synonymLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            synonymLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            synonymLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            synonymLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-             // Activate the width constraint
+            synonymLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 25),
+            synonymLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 4),
+            synonymLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -4),
+            synonymLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -25),
+             
         ])
-        
-        // Set preferredMaxLayoutWidth to enable multiline support
         synonymLabel.preferredMaxLayoutWidth = 300
-        // set the same value as the maximum width constraint
     }
 
-    
     func synonymConfig(_ text: String){
         synonymLabel.text = text
     }

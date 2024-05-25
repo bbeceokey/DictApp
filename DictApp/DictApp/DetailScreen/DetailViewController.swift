@@ -25,8 +25,8 @@ protocol DetailViewControllerProtocol: AnyObject {
 
 class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource  {
     
-    @IBOutlet weak var audioImage: UIImageView!
     @IBOutlet weak var wordName: UILabel!
+    @IBOutlet weak var audioImage: UIImageView!
     @IBOutlet weak var wordRead: UILabel!
     @IBOutlet weak var filtereledCollection: UICollectionView!
     @IBOutlet weak var wordTable: UITableView!

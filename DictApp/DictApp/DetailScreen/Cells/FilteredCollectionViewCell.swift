@@ -31,23 +31,24 @@ class FilteredCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubviews() {
-           // UILabel oluştur
-           filteredLabel = UILabel()
-           filteredLabel.textAlignment = .center
-           filteredLabel.textColor = .black
-           filteredLabel.backgroundColor = .gray
-           filteredLabel.layer.cornerRadius = 8
-           filteredLabel.clipsToBounds = true
-           addSubview(filteredLabel)
-           
-          
-           filteredLabel.translatesAutoresizingMaskIntoConstraints = false
-           NSLayoutConstraint.activate([
-               filteredLabel.topAnchor.constraint(equalTo: topAnchor),
-               filteredLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-               filteredLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-               filteredLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-           ])
+        filteredLabel = UILabel()
+        filteredLabel.textAlignment = .center
+        filteredLabel.textColor = .black
+        filteredLabel.backgroundColor = .lightGray
+        filteredLabel.layer.borderWidth = 1.0 // Çerçeve kalınlığı
+        filteredLabel.layer.borderColor = UIColor.black.cgColor // Çerçeve rengi
+        filteredLabel.layer.cornerRadius = 8
+        filteredLabel.clipsToBounds = true
+        addSubview(filteredLabel)
+       
+      
+       filteredLabel.translatesAutoresizingMaskIntoConstraints = false
+       NSLayoutConstraint.activate([
+        filteredLabel.topAnchor.constraint(equalTo: topAnchor,constant: 4),
+        filteredLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 4),
+        filteredLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -4),
+        filteredLabel.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -4)
+       ])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
                filteredLabel.isUserInteractionEnabled = true
@@ -61,7 +62,7 @@ class FilteredCollectionViewCell: UICollectionViewCell {
             }
             
             private func updateLabelAppearance() {
-                filteredLabel.backgroundColor = isSelectedFilter ? .blue : .gray
+                filteredLabel.backgroundColor = isSelectedFilter ? .systemBlue : .white
             }
 
 }
