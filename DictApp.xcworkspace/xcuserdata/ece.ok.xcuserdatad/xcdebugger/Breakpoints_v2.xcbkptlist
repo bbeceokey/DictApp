@@ -242,22 +242,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DAEFBD78-4D48-4296-B88E-FB8EA84F0E81"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DictApp/DictApp/DetailScreen/DetailPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "setWordDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7659D038-FB9C-47D5-8CBD-176A91115B97"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -268,86 +252,6 @@
             startingLineNumber = "167"
             endingLineNumber = "167"
             landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "20C2E09B-59C0-4FFF-849B-8764259D210A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DictApp/DictApp/DetailScreen/DetailPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "updateSelectedFilters(with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "20C2E09B-59C0-4FFF-849B-8764259D210A - 8f7fbd41e6bac72e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DictApp.DetailPresenter.updateSelectedFilters(with: Swift.String) -&gt; ()"
-                  moduleName = "DictApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ece.ok/Desktop/turkcell/FinalProje/DictsApp/DictApp/DictApp/DetailScreen/DetailPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "20C2E09B-59C0-4FFF-849B-8764259D210A - 8f7fbd41e6bac72e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DictApp.DetailPresenter.updateSelectedFilters(with: Swift.String) -&gt; ()"
-                  moduleName = "DictApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ece.ok/Desktop/turkcell/FinalProje/DictsApp/DictApp/DictApp/DetailScreen/DetailPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4DB323BD-3114-437C-AFD3-E5B8ADF7DF2A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DictApp/DictApp/HomeScreen/HomeInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "fetchSynonyms(word:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AEEE6194-98AA-448F-96E3-C2971DEFAEC0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DictApp/DictApp/HomeScreen/HomeInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "fetchWordDetail(word:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -35,6 +35,7 @@ final class HomeViewController: UIViewController {
         if searchWord != "" {
             presenter.searchWord(word: search)
             recentSearches = presenter.fetchRecentSearches()
+            reloadTableView()
         } else {
             self.showAlertDismiss(text:"Please some word.")
         }
@@ -47,10 +48,10 @@ final class HomeViewController: UIViewController {
         recentSearches = presenter.fetchRecentSearches()
         recentSearchsTable.isUserInteractionEnabled = true
         reloadTableView()
-        
+        searchBar.delegate = self
         recentSearchsTable.delegate = self
         recentSearchsTable.dataSource = self
-        searchBar.delegate = self
+        //searchBar.delegate = self
         searchBar.becomeFirstResponder()
         originalSearchButtonTopConstraintConstant = buttonTopConstraint.constant
         originalSearchButtonBottomConstraintConstant = buttonBottomConstraint.constant
@@ -128,12 +129,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let search = recentSearches[indexPath.row].name else { return }
         presenter.tappledWord(word: search)
+        reloadTableView()
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             recentSearches.remove(at: indexPath.row)
             presenter?.deleteRecentSearch(at: indexPath.row)
+            reloadTableView()
         }
     }
 }
