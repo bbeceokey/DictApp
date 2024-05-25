@@ -35,7 +35,7 @@ public struct License : Decodable {
 public struct Meaning : Decodable {
     public let partOfSpeech: String
     public let definitions: [Definition]
-    public let synonyms, antonyms: [String]
+    public let synonyms, antonyms: [String]?
 }
 
 // MARK: - Definition

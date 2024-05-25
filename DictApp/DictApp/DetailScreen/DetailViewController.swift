@@ -70,64 +70,61 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         setUpSynonyms()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(audioImageTapped))
-                audioImage.addGestureRecognizer(tapGesture)
-                audioImage.isUserInteractionEnabled = true
+        audioImage.addGestureRecognizer(tapGesture)
+        audioImage.isUserInteractionEnabled = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleFilterSelectionChange(_:)), name: NSNotification.Name("FilterSelectionChanged"), object: nil)
    
     }
     @objc private func handleFilterSelectionChange(_ notification: Notification) {
-            guard let userInfo = notification.userInfo,
-                  let label = userInfo["label"] as? String else { return }
-            
-            presenter.updateSelectedFilters(with: label)
-        }
+        guard let userInfo = notification.userInfo,
+              let label = userInfo["label"] as? String else { return }
+        presenter.updateSelectedFilters(with: label)
+}
     
     @objc func audioImageTapped() {
-            if let audioURLString = presenter.getAudioURL(), let url = URL(string: audioURLString) {
-                downloadAndPlayAudio(from: url)
-            } else {
-                showAlertWithDismiss()
-            }
+        if let audioURLString = presenter.getAudioURL(), let url = URL(string: audioURLString) {
+            downloadAndPlayAudio(from: url)
+        } else {
+            showAlertWithDismiss()
         }
+    }
         
-        func downloadAndPlayAudio(from url: URL) {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    print("Error downloading audio: \(error.localizedDescription)")
-                    return
-                }
-                guard let data = data else {
-                    print("Error: No data received")
-                    return
-                }
-                self.playAudio(with: data)
+    func downloadAndPlayAudio(from url: URL) {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error downloading audio: \(error.localizedDescription)")
+                return
             }
-            task.resume()
+            guard let data = data else {
+                print("Error: No data received")
+                return
+            }
+            self.playAudio(with: data)
         }
+        task.resume()
+    }
         
-        func playAudio(with data: Data) {
-            DispatchQueue.main.async {
-                do {
-                    self.audioPlayer = try AVAudioPlayer(data: data)
-                    self.audioPlayer?.play()
-                } catch let error {
-                    print("Error playing audio: \(error.localizedDescription)")
-                }
+    func playAudio(with data: Data) {
+        DispatchQueue.main.async {
+            do {
+                self.audioPlayer = try AVAudioPlayer(data: data)
+                self.audioPlayer?.play()
+            } catch let error {
+                print("Error playing audio: \(error.localizedDescription)")
             }
         }
+    }
     
     func showAlertWithDismiss() {
         let alert = UIAlertController(title: nil, message: "This word does not have a pronunciation audio.", preferredStyle: .alert)
-        
         alert.view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-                
-                present(alert, animated: true) {
-                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
-                        alert.dismiss(animated: true, completion: nil)
-                    }
-                }
-       }
+        present(alert, animated: true) {
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfTable()
@@ -144,12 +141,11 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         if collectionView == filtereledCollection {
             return presenter.numberOfFilter()
         } else if collectionView == synonymCollections {
-           
             return presenter.getSynonyms().count
-            
         }
         return 0
     }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
@@ -174,18 +170,15 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == synonymCollections{
             let text = synonyms[indexPath.row].word
-                let width = collectionView.bounds.width - 20
-                
-                return CGSize(width: width, height: 150)
+            let width = collectionView.bounds.width - 20
+            return CGSize(width: width, height: 150)
         }
         return CGSize(width: 0, height: 0)
-        
-        }
+    }
  
     func setUpFiltered() {
         let layout = UICollectionViewFlowLayout()
-       layout.scrollDirection = .horizontal // Yatay yönde kaydırma
-       
+        layout.scrollDirection = .horizontal // Yatay yönde kaydırma
         layout.estimatedItemSize = CGSize(width: 200, height: 50)
       
     }

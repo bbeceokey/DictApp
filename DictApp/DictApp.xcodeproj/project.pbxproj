@@ -37,6 +37,12 @@
 		2F84E9B22BF95EEF00570734 /* MeaningCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */; };
 		2F84E9B42BF9E4FB00570734 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B32BF9E4FB00570734 /* TableView.swift */; };
 		2F84E9B62BF9E51500570734 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84E9B52BF9E51500570734 /* ClassName.swift */; };
+		2F8F41992C012B1B00B844FB /* Word.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F41982C012B1B00B844FB /* Word.json */; };
+		2F8F419E2C012C7400B844FB /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F419D2C012C7400B844FB /* MockHomeViewController.swift */; };
+		2F8F41A22C01314700B844FB /* MockHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41A12C01314700B844FB /* MockHomeInteractor.swift */; };
+		2F8F41A62C01348200B844FB /* MockHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41A52C01348200B844FB /* MockHomePresenter.swift */; };
+		2F8F41AC2C013E9100B844FB /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41AB2C013E9100B844FB /* MockHomeRouter.swift */; };
+		2F8F41AE2C0141BC00B844FB /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8F41AD2C0141BC00B844FB /* MockCoreDataManager.swift */; };
 		2FFA50222BFA81970025B573 /* FilteredCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +97,12 @@
 		2F84E9B12BF95EEF00570734 /* MeaningCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningCellPresenter.swift; sourceTree = "<group>"; };
 		2F84E9B32BF9E4FB00570734 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		2F84E9B52BF9E51500570734 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
+		2F8F41982C012B1B00B844FB /* Word.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Word.json; sourceTree = "<group>"; };
+		2F8F419D2C012C7400B844FB /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
+		2F8F41A12C01314700B844FB /* MockHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeInteractor.swift; sourceTree = "<group>"; };
+		2F8F41A52C01348200B844FB /* MockHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomePresenter.swift; sourceTree = "<group>"; };
+		2F8F41AB2C013E9100B844FB /* MockHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
+		2F8F41AD2C0141BC00B844FB /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
 		2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCellPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +173,9 @@
 		2F84E96C2BF720B300570734 /* DictAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				2F8F419C2C012C3A00B844FB /* Mock */,
 				2F84E96D2BF720B300570734 /* DictAppTests.swift */,
+				2F8F41982C012B1B00B844FB /* Word.json */,
 			);
 			path = DictAppTests;
 			sourceTree = "<group>";
@@ -238,6 +252,18 @@
 				2FFA50212BFA81970025B573 /* FilteredCellPresenter.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F8F419C2C012C3A00B844FB /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				2F8F419D2C012C7400B844FB /* MockHomeViewController.swift */,
+				2F8F41AD2C0141BC00B844FB /* MockCoreDataManager.swift */,
+				2F8F41A12C01314700B844FB /* MockHomeInteractor.swift */,
+				2F8F41A52C01348200B844FB /* MockHomePresenter.swift */,
+				2F8F41AB2C013E9100B844FB /* MockHomeRouter.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +390,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8F41992C012B1B00B844FB /* Word.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +435,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F8F41AC2C013E9100B844FB /* MockHomeRouter.swift in Sources */,
 				2F84E96E2BF720B300570734 /* DictAppTests.swift in Sources */,
+				2F8F41A62C01348200B844FB /* MockHomePresenter.swift in Sources */,
+				2F8F41A22C01314700B844FB /* MockHomeInteractor.swift in Sources */,
+				2F8F41AE2C0141BC00B844FB /* MockCoreDataManager.swift in Sources */,
+				2F8F419E2C012C7400B844FB /* MockHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

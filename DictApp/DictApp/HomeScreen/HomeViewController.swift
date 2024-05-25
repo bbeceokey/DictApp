@@ -37,20 +37,22 @@ final class HomeViewController: UIViewController {
             self.showAlertDismiss()
         }
     }
- 
+    
     override func viewDidLoad() {
+        // supersiz memory leakler
         recentSearchsTable.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeWordCell")
-
+        
         recentSearches = presenter.fetchRecentSearches()
         recentSearchsTable.isUserInteractionEnabled = true
         reloadTableView()
-        searchBar.delegate = self
+        
         recentSearchsTable.delegate = self
         recentSearchsTable.dataSource = self
+        searchBar.delegate = self
         searchBar.becomeFirstResponder()
         originalSearchButtonTopConstraintConstant = buttonTopConstraint.constant
         originalSearchButtonBottomConstraintConstant = buttonBottomConstraint.constant
-       
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -58,34 +60,33 @@ final class HomeViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false // Bu satır, bu jestle birlikte diğer jestlerin tanınmasına izin verir.
         view.addGestureRecognizer(tapGesture) // Tablonun bulunduğu view'e ekleyin.
-
-       
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-                    buttonBottomConstraint.constant = keyboardFrame.height + 2
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
-                    }
-                }
-       }
-       
-       @objc func keyboardWillHide(notification: NSNotification) {
-           buttonBottomConstraint.constant = 20
-                  UIView.animate(withDuration: 0.3) {
-                      self.view.layoutIfNeeded()
-                  }
-       }
-       
-       @objc func dismissKeyboard() {
-           view.endEditing(true)
-   }
-    
-    deinit {
-            NotificationCenter.default.removeObserver(self)
+            buttonBottomConstraint.constant = keyboardFrame.height + 2
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        buttonBottomConstraint.constant = 20
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
 
 
 extension HomeViewController: UISearchBarDelegate {
@@ -123,7 +124,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let search = recentSearches[indexPath.row].name ?? "ece"
+        guard let search = recentSearches[indexPath.row].name else { return }
         presenter.tappledWord(word: search)
     }
     

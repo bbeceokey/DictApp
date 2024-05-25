@@ -64,7 +64,6 @@ extension HomePresenter: HomePresenterProtocol {
     
     
     func numberOfRows() -> Int {
-        print(recentSearches?.count)
         return recentSearches?.count ?? 0
     }
     
@@ -168,11 +167,9 @@ extension HomePresenter: HomeOutputInteractorProtocol {
                 navigateIfReady()
             case .failure(let error):
                 print(error)
-                // view?.displayError(error: error) // Uncomment if you want to display error to the user
             }
         case .failure(let error):
             print(error)
-            // view?.displayError(error: error) // Uncomment if you want to display error to the user
         }
     }
 
@@ -181,7 +178,6 @@ extension HomePresenter: HomeOutputInteractorProtocol {
         guard let csword = customWord, let synonyms = synonym else {
             return
         }
-        print("navigationda cs" , csword , "synonyms",synonyms, "words",words)
         if let wordss  = words {
             router?.navigateToDetail(with: csword, synonyms: synonyms , words: wordss)
         }

@@ -31,7 +31,6 @@ final class HomeRouter {
         view.presenter = presenter
         interactor.output = presenter
         router.mainVC = view // mainVC ataması burada yapılmalı
-
         return view
     }
 }
