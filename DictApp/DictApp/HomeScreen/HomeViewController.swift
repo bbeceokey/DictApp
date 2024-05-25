@@ -29,7 +29,9 @@ final class HomeViewController: UIViewController {
     
     
     @IBAction func SearchClicked(_ sender: Any) {
-        guard let search = searchWord else { return }
+        guard let search = searchWord?.trimmingCharacters(in: .whitespacesAndNewlines), !search.isEmpty else {
+            self.showAlertDismiss()
+            return }
         if searchWord != "" {
             presenter.searchWord(word: search)
             recentSearches = presenter.fetchRecentSearches()

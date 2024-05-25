@@ -69,6 +69,13 @@ extension HomePresenter: HomePresenterProtocol {
     
     
     func searchWord(word: String) {
+        let validWordPattern = "^[a-zA-ZğüşöçİĞÜŞÖÇ]+$"  // Sadece Türkçe harfler, İngilizce harfler
+        let regex = try? NSRegularExpression(pattern: validWordPattern)
+        let range = NSRange(location: 0, length: word.utf16.count)
+        if regex?.firstMatch(in: word, options: [], range: range) == nil {
+               view?.showAlertDismiss()
+               return
+           }
         if word != ""{
             updateCore(word: word)
             interactor?.fetchWordDetail(word: word)
