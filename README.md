@@ -27,3 +27,9 @@ API_KEY
    |  ![simulator_screenshot_7AE231A1-8C38-47CC-AB4A-84B2F43F8BFE](https://github.com/bbeceokey/DictApp/assets/158613315/e0887e17-4f8f-4205-93c2-ba4a234dbb93)
  |
 
+##SimülatörVideo 
+
+-- some words dont have audio , if it has , you clicked the image and can listen.
+
+https://github.com/bbeceokey/DictApp/assets/158613315/bcf10d8c-70e3-478a-8dfa-2f7590673fb0
+
