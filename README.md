@@ -15,8 +15,8 @@ API_KEY
 
 ## Libraries
 - Alamofire
-- CoreData
-- AVFoundation
+- CoreData -> store recent search items
+- AVFoundation -> for words' pronunciation
 
   
 ##Screenshots
