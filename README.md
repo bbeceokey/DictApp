@@ -21,6 +21,9 @@ API_KEY
   
 ##Screenshots
 
-| Ekran Görüntüsü 1 | Ekran Görüntüsü 2 | Ekran Görüntüsü 3 | Ekran Görüntüsü 4 | Ekran Görüntüsü 5 |
-|------------------|------------------|------------------|------------------|------------------|
-| ![simulator_screenshot_8B009219-B88E-4CB7-AD7F-F70D25D1A6D5](https://github.com/bbeceokey/DictApp/assets/158613315/11039a0d-1680-4310-a0fe-e31e32bec776) | ![simulator_screenshot_4E686A43-58D8-4CB3-891D-BB8A3D013381](https://github.com/bbeceokey/DictApp/assets/158613315/b6ceb80b-e523-4fe1-a3ed-78ef53cc67c6) | ![simulator_screenshot_997B7A15-9E4D-4CBF-AC6A-986B355F2CA5](https://github.com/bbeceokey/DictApp/assets/158613315/6f9086b9-54b7-4dd2-adac-af5a93785cc8) | ![simulator_screenshot_30BEC87C-EF24-4E25-B8F0-85E1B3F146E6]
+| Ekran Görüntüsü 1 | Ekran Görüntüsü 2 | Ekran Görüntüsü 3 | Ekran Görüntüsü 4 | Ekran Görüntüsü 5 |  Ekran Görüntüsü 6 |
+|------------------|------------------|------------------|------------------|------------------|------------------|
+| ![simulator_screenshot_8B009219-B88E-4CB7-AD7F-F70D25D1A6D5](https://github.com/bbeceokey/DictApp/assets/158613315/11039a0d-1680-4310-a0fe-e31e32bec776) | ![simulator_screenshot_4D22AC32-CB9B-4ACE-80A9-B3B3093E3CFC](https://github.com/bbeceokey/DictApp/assets/158613315/1b64f5ca-62cf-43b0-b69f-7f9e7e9ce965) | ![simulator_screenshot_B1F12C83-BAE2-4BF2-B7AB-E6756E6122D4](https://github.com/bbeceokey/DictApp/assets/158613315/98f24b8d-16c4-49f6-80b4-bb4d3d930274) | ![simulator_screenshot_3FFDD6E3-2127-4625-AC23-08F9430ED994](https://github.com/bbeceokey/DictApp/assets/158613315/c0edf112-7180-476d-882a-e9a6d06e6b8e) | ![simulator_screenshot_2228F9E9-F196-4048-982A-2DF0EB469ABC](https://github.com/bbeceokey/DictApp/assets/158613315/07e84fce-93f4-4294-906d-af6ba5388891) | ![simulator_screenshot_79146F6F-76AB-4770-AA63-D1D0868706D1](https://github.com/bbeceokey/DictApp/assets/158613315/33aa4423-9a33-4a42-85f1-6bfab2012a9b)
+   |  ![simulator_screenshot_7AE231A1-8C38-47CC-AB4A-84B2F43F8BFE](https://github.com/bbeceokey/DictApp/assets/158613315/e0887e17-4f8f-4205-93c2-ba4a234dbb93)
+ |
+
