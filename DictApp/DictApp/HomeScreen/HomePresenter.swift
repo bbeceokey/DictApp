@@ -73,7 +73,7 @@ extension HomePresenter: HomePresenterProtocol {
         let regex = try? NSRegularExpression(pattern: validWordPattern)
         let range = NSRange(location: 0, length: word.utf16.count)
         if regex?.firstMatch(in: word, options: [], range: range) == nil {
-               view?.showAlertDismiss()
+               view?.showAlertDismiss(text:"Please some word, not numerical and random types.")
                return
            }
         if word != ""{
@@ -81,8 +81,6 @@ extension HomePresenter: HomePresenterProtocol {
             interactor?.fetchWordDetail(word: word)
             interactor?.fetchSynonyms(word: word)
             tableViewUpdate()
-        } else {
-            view?.showAlertDismiss()
         }
        
     }
@@ -125,6 +123,7 @@ extension HomePresenter: HomeOutputInteractorProtocol {
           
             navigateIfReady()
         case .failure(let error):
+            view?.showAlertDismiss(text:"Don't find a word,Please entry new word")
             print(error)
             //view?.displayError(error: error)
         }
@@ -137,7 +136,7 @@ extension HomePresenter: HomeOutputInteractorProtocol {
             navigateIfReady()
         case .failure(let error):
             print(error)
-            //view?.displayError(error: error)
+            view?.showAlertDismiss(text:"Don't find a word,Please entry new word")
         }
     }
     
@@ -173,6 +172,7 @@ extension HomePresenter: HomeOutputInteractorProtocol {
                 
                 navigateIfReady()
             case .failure(let error):
+                view?.showAlertDismiss(text:"Don't find a word,Please entry new word")
                 print(error)
             }
         case .failure(let error):

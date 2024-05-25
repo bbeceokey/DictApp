@@ -12,7 +12,7 @@ import CoreData
 protocol HomeViewControllerProtocol : AnyObject{
     func displayRecentSearches(_ searches: [WordData])
     func reloadTableView()
-    func showAlertDismiss()
+    func showAlertDismiss(text : String)
 }
 final class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol!
@@ -30,13 +30,13 @@ final class HomeViewController: UIViewController {
     
     @IBAction func SearchClicked(_ sender: Any) {
         guard let search = searchWord?.trimmingCharacters(in: .whitespacesAndNewlines), !search.isEmpty else {
-            self.showAlertDismiss()
+            self.showAlertDismiss(text:"Please some word.")
             return }
         if searchWord != "" {
             presenter.searchWord(word: search)
             recentSearches = presenter.fetchRecentSearches()
         } else {
-            self.showAlertDismiss()
+            self.showAlertDismiss(text:"Please some word.")
         }
     }
     
@@ -139,8 +139,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeViewController: HomeViewControllerProtocol {
-    func showAlertDismiss() {
-        let alert = UIAlertController(title: nil, message: "Please entry some word", preferredStyle: .alert)
+    func showAlertDismiss(text : String) {
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
         alert.view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         present(alert, animated: true) {
             Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
